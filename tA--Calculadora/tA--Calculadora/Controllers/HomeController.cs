@@ -23,7 +23,7 @@ namespace tA__Calculadora.Controllers
         }
 
         [HttpPost] // só quando o formulário for submetido em 'post' ele será acionado
-        public IActionResult Index(string botao, string visor)
+        public IActionResult Index(string botao, string visor, string pOp, string operador)
         {
 
             switch (botao)
@@ -72,13 +72,42 @@ namespace tA__Calculadora.Controllers
                     }
                     
                     break;
-                
+                case "+":
+                    pOp = visor;
+                    operador = botao;
+                    visor = "";
+                  //  double temp = Convert.ToDouble(pOp) + Convert.ToDouble(vi)
+                    break;
+                case "-":
+                case "*":
+                case ":":
+                    //foi pressionado um operador
+
+                    pOp = visor;
+                    operador = botao;
+                    visor = "";
+                    
+
+                    
+
+                    break;
+                case "=":
+                    
+                    
+                    string temp = pOp + operador + visor;
+                    var op = new System.Data.DataTable().Compute(temp, "");
+                    visor = op.ToString();
+                    
+
+                    break;
+
 
             }
 
             //preparar dados para serem enviados à View
             ViewBag.Visor = visor;
-            
+            ViewBag.POp = pOp;
+            ViewBag.Operador = operador;
             
 
             return View();

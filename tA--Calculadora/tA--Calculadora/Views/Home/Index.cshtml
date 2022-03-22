@@ -10,6 +10,16 @@
 
 <form method="post"> 
 
+    <!-- linha de comentário, em HTML: vai aparecer no browser-->
+    @*esta linha de comentário é do RAZOR : não é visível no browser*@
+    <input type= "hidden" 
+            name="pOp"
+            value="@ViewBag.POp"/>
+
+    <input type="hidden"
+            name="operador"
+            value="@ViewBag.Operador"/>
+
   <table border="0"
           style="border-spacing:3px;
                  border-collapse:collapse;
