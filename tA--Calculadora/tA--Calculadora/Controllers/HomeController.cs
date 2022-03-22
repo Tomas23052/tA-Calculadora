@@ -13,7 +13,14 @@ namespace tA__Calculadora.Controllers
             _logger = logger;
         }
 
+        [HttpGet] // este anotador é facultativo
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost] // só quando o formulário for submetido em 'post' ele será acionado
+        public IActionResult Index(string botao)
         {
             return View();
         }
