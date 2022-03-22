@@ -50,7 +50,7 @@ namespace tA__Calculadora.Controllers
                     //foi pressionado ','
                     if (visor.Contains(",") == false)
                     {
-                        visor += botao;
+                        visor += ",";
                     }
                     
                     break;
@@ -73,13 +73,8 @@ namespace tA__Calculadora.Controllers
                     
                     break;
                 case "+":
-                    pOp = visor;
-                    operador = botao;
-                    visor = "";
-                  //  double temp = Convert.ToDouble(pOp) + Convert.ToDouble(vi)
-                    break;
                 case "-":
-                case "*":
+                case "x":
                 case ":":
                     //foi pressionado um operador
 
@@ -88,13 +83,11 @@ namespace tA__Calculadora.Controllers
                     visor = "";
                     
 
-                    
-
                     break;
                 case "=":
                     
                     
-                    string temp = pOp + operador + visor;
+                    string temp = pOp.Replace(",", ".") + operador.Replace("x", "*").Replace(":", "/") + visor;
                     var op = new System.Data.DataTable().Compute(temp, "");
                     visor = op.ToString();
                     
